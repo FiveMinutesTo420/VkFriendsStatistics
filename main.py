@@ -10,7 +10,6 @@ API_TOKEN = os.getenv("API_TOKEN")
 cur_year = datetime.datetime.now().year
 line = "-----------"
 
-
 user_id = input("Enter ID vk: ")
 print(" ")
 # request to get a user's friends
@@ -20,12 +19,14 @@ user_query = f"https://api.vk.com/method/users.get?user_ids={user_id}&name_case=
 
 r_user = requests.get(user_query)
 user_data = r_user.json()
+
+if ("error" in user_data):
+    sys.exit(user_data['error']['error_msg'])
 # writing user's data in variable
 user = user_data['response'][0]
 
 r = requests.get(req)
 data = r.json()
-
 if ("error" in data):
     sys.exit(data['error']['error_msg'])
 
