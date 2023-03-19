@@ -34,7 +34,8 @@ if ("error" in data):
 friends = data['response']['items']
 # total count of user's friend
 count = data['response']['count']
-
+if (count == 0):
+    sys.exit("У этого пользователя нет друзей :(")
 no_bdate = 0
 ages = []
 middle_age = 0
