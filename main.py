@@ -6,16 +6,16 @@ import sys
 from dotenv import load_dotenv
 
 load_dotenv()
-API_TOKEN = os.getenv("API_TOKEN")
+ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 cur_year = datetime.datetime.now().year
 line = "-----------"
 
 user_id = input("Enter ID vk: ")
 print(" ")
 # request to get a user's friends
-req = f"https://api.vk.com/method/friends.get?user_id={user_id}&order=name&fields=bdate,sex&access_token={API_TOKEN}&v=5.131"
+req = f"https://api.vk.com/method/friends.get?user_id={user_id}&order=name&fields=bdate,sex&access_token={ACCESS_TOKEN}&v=5.131"
 # request to get a user
-user_query = f"https://api.vk.com/method/users.get?user_ids={user_id}&name_case=gen&access_token={API_TOKEN}&v=5.131"
+user_query = f"https://api.vk.com/method/users.get?user_ids={user_id}&name_case=gen&access_token={ACCESS_TOKEN}&v=5.131"
 
 r_user = requests.get(user_query)
 user_data = r_user.json()
